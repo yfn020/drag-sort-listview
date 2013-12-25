@@ -1,14 +1,13 @@
 package com.mobeta.android.demodslv;
 
-import java.util.Arrays;
-import java.util.ArrayList;
-
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 
 import com.mobeta.android.dslv.DragSortListView;
-import com.mobeta.android.dslv.DragSortController;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class WarpDSLV extends ListActivity {
 
