@@ -1,18 +1,19 @@
 package com.mobeta.android.demodslv;
 
-import java.util.Arrays;
-import java.util.ArrayList;
-
-import android.support.v4.app.ListFragment;
 import android.app.Activity;
+import android.os.Bundle;
+import android.support.v4.app.ListFragment;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.LayoutInflater;
-import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import com.mobeta.android.dslv.DragSortListView;
+
 import com.mobeta.android.dslv.DragSortController;
+import com.mobeta.android.dslv.DragSortListView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class DSLVFragment extends ListFragment {
@@ -34,7 +35,7 @@ public class DSLVFragment extends ListFragment {
                 }
             };
 
-    private DragSortListView.RemoveListener onRemove = 
+    private DragSortListView.RemoveListener onRemove =
             new DragSortListView.RemoveListener() {
                 @Override
                 public void remove(int which) {
@@ -48,7 +49,7 @@ public class DSLVFragment extends ListFragment {
         // DSLVFragment has a buildController() method.
         return R.layout.dslv_fragment_main;
     }
-    
+
     /**
      * Return list item layout resource passed to the ArrayAdapter.
      */
@@ -56,7 +57,7 @@ public class DSLVFragment extends ListFragment {
         /*if (removeMode == DragSortController.FLING_LEFT_REMOVE || removeMode == DragSortController.SLIDE_LEFT_REMOVE) {
             return R.layout.list_item_handle_right;
         } else */
-    	if (removeMode == DragSortController.CLICK_REMOVE) {
+        if (removeMode == DragSortController.CLICK_REMOVE) {
             return R.layout.list_item_click_remove;
         } else {
             return R.layout.list_item_handle_left;
@@ -118,10 +119,12 @@ public class DSLVFragment extends ListFragment {
     }
 
 
-    /** Called when the activity is first created. */
+    /**
+     * Called when the activity is first created.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         mDslv = (DragSortListView) inflater.inflate(getLayout(), container, false);
 
         mController = buildController(mDslv);
@@ -136,7 +139,7 @@ public class DSLVFragment extends ListFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        mDslv = (DragSortListView) getListView(); 
+        mDslv = (DragSortListView) getListView();
 
         mDslv.setDropListener(onDrop);
         mDslv.setRemoveListener(onRemove);

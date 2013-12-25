@@ -109,7 +109,7 @@ public class Sections extends ListActivity {
                 scale /= (float) (mDslv.getWidth() / 5);
                 ViewGroup.LayoutParams lp = floatView.getLayoutParams();
                 lp.height = Math.max(origHeight, (int) (scale * origHeight));
-                Log.d("mobeta", "setting height "+lp.height);
+                Log.d("mobeta", "setting height " + lp.height);
                 floatView.setLayoutParams(lp);
             }
 
@@ -140,7 +140,7 @@ public class Sections extends ListActivity {
     }
 
     private class SectionAdapter extends BaseAdapter implements DragSortListView.DropListener {
-        
+
         private final static int SECTION_DIV = 0;
         private final static int SECTION_ONE = 1;
         private final static int SECTION_TWO = 2;

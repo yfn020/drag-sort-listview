@@ -17,45 +17,47 @@ public class WarpDSLV extends ListActivity {
     private ArrayList<String> list;
 
     private DragSortListView.DropListener onDrop =
-        new DragSortListView.DropListener() {
-            @Override
-            public void drop(int from, int to) {
-                String item=adapter.getItem(from);
+            new DragSortListView.DropListener() {
+                @Override
+                public void drop(int from, int to) {
+                    String item = adapter.getItem(from);
 
-                adapter.notifyDataSetChanged();
-                adapter.remove(item);
-                adapter.insert(item, to);
-            }
-        };
+                    adapter.notifyDataSetChanged();
+                    adapter.remove(item);
+                    adapter.insert(item, to);
+                }
+            };
 
-    private DragSortListView.RemoveListener onRemove = 
-        new DragSortListView.RemoveListener() {
-            @Override
-            public void remove(int which) {
-                adapter.remove(adapter.getItem(which));
-            }
-        };
+    private DragSortListView.RemoveListener onRemove =
+            new DragSortListView.RemoveListener() {
+                @Override
+                public void remove(int which) {
+                    adapter.remove(adapter.getItem(which));
+                }
+            };
 
     private DragSortListView.DragScrollProfile ssProfile =
-        new DragSortListView.DragScrollProfile() {
-            @Override
-            public float getSpeed(float w, long t) {
-                if (w > 0.8f) {
-                    // Traverse all views in a millisecond
-                    return ((float) adapter.getCount()) / 0.001f;
-                } else {
-                    return 10.0f * w;
+            new DragSortListView.DragScrollProfile() {
+                @Override
+                public float getSpeed(float w, long t) {
+                    if (w > 0.8f) {
+                        // Traverse all views in a millisecond
+                        return ((float) adapter.getCount()) / 0.001f;
+                    } else {
+                        return 10.0f * w;
+                    }
                 }
-            }
-        };
+            };
 
-    /** Called when the activity is first created. */
+    /**
+     * Called when the activity is first created.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.warp_main);
 
-        DragSortListView lv = (DragSortListView) getListView(); 
+        DragSortListView lv = (DragSortListView) getListView();
 
         lv.setDropListener(onDrop);
         lv.setRemoveListener(onRemove);

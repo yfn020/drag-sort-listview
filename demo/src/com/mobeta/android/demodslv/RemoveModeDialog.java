@@ -1,12 +1,10 @@
 package com.mobeta.android.demodslv;
 
-import com.mobeta.android.dslv.DragSortController;
-
-import android.support.v4.app.DialogFragment;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 
 import com.mobeta.android.dslv.DragSortController;
 
@@ -49,7 +47,7 @@ public class RemoveModeDialog extends DialogFragment {
                                 mRemoveMode = which;
                             }
                         })
-                // Set the action buttons
+                        // Set the action buttons
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
@@ -63,7 +61,7 @@ public class RemoveModeDialog extends DialogFragment {
                     public void onClick(DialogInterface dialog, int id) {
                     }
                 });
-    
+
         return builder.create();
     }
 }
