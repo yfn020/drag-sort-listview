@@ -37,8 +37,7 @@ public class DSLVFragmentClicks extends DSLVFragment {
         ListView lv = getListView();
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-                                    long arg3) {
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                 String message = String.format("Clicked item %d", arg2);
                 Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
 

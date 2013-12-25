@@ -12,22 +12,15 @@ import com.mobeta.android.dslv.DragSortListView;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class ArbItemSizeDSLV extends ListActivity {
 
     private JazzAdapter adapter;
-
-    private ArrayList<JazzArtist> mArtists;
-
-    private String[] mArtistNames;
-    private String[] mArtistAlbums;
 
     private DragSortListView.DropListener onDrop =
             new DragSortListView.DropListener() {
                 @Override
                 public void drop(int from, int to) {
                     JazzArtist item = adapter.getItem(from);
-
                     adapter.remove(item);
                     adapter.insert(item, to);
                 }
@@ -54,10 +47,10 @@ public class ArbItemSizeDSLV extends ListActivity {
         lv.setDropListener(onDrop);
         lv.setRemoveListener(onRemove);
 
-        mArtistNames = getResources().getStringArray(R.array.jazz_artist_names);
-        mArtistAlbums = getResources().getStringArray(R.array.jazz_artist_albums);
+        String[] mArtistNames = getResources().getStringArray(R.array.jazz_artist_names);
+        String[] mArtistAlbums = getResources().getStringArray(R.array.jazz_artist_albums);
 
-        mArtists = new ArrayList<JazzArtist>();
+        ArrayList<JazzArtist> mArtists = new ArrayList<JazzArtist>();
         JazzArtist ja;
         for (int i = 0; i < mArtistNames.length; ++i) {
             ja = new JazzArtist();
@@ -71,9 +64,7 @@ public class ArbItemSizeDSLV extends ListActivity {
         }
 
         adapter = new JazzAdapter(mArtists);
-
         setListAdapter(adapter);
-
     }
 
     private class JazzArtist {
@@ -93,8 +84,7 @@ public class ArbItemSizeDSLV extends ListActivity {
     private class JazzAdapter extends ArrayAdapter<JazzArtist> {
 
         public JazzAdapter(List<JazzArtist> artists) {
-            super(ArbItemSizeDSLV.this, R.layout.jazz_artist_list_item,
-                    R.id.artist_name_textview, artists);
+            super(ArbItemSizeDSLV.this, R.layout.jazz_artist_list_item, R.id.artist_name_textview, artists);
         }
 
         public View getView(int position, View convertView, ViewGroup parent) {

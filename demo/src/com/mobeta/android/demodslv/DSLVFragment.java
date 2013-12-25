@@ -15,13 +15,9 @@ import com.mobeta.android.dslv.DragSortListView;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
 public class DSLVFragment extends ListFragment {
 
     ArrayAdapter<String> adapter;
-
-    private String[] array;
-    private ArrayList<String> list;
 
     private DragSortListView.DropListener onDrop =
             new DragSortListView.DropListener() {
@@ -93,8 +89,8 @@ public class DSLVFragment extends ListFragment {
      * set a different adapter.
      */
     public void setListAdapter() {
-        array = getResources().getStringArray(R.array.jazz_artist_names);
-        list = new ArrayList<String>(Arrays.asList(array));
+        String[] array = getResources().getStringArray(R.array.jazz_artist_names);
+        ArrayList<String> list = new ArrayList<String>(Arrays.asList(array));
 
         adapter = new ArrayAdapter<String>(getActivity(), getItemLayout(), R.id.text, list);
         setListAdapter(adapter);
@@ -123,8 +119,7 @@ public class DSLVFragment extends ListFragment {
      * Called when the activity is first created.
      */
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mDslv = (DragSortListView) inflater.inflate(getLayout(), container, false);
 
         mController = buildController(mDslv);
@@ -140,7 +135,6 @@ public class DSLVFragment extends ListFragment {
         super.onActivityCreated(savedInstanceState);
 
         mDslv = (DragSortListView) getListView();
-
         mDslv.setDropListener(onDrop);
         mDslv.setRemoveListener(onRemove);
 

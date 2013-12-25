@@ -29,8 +29,7 @@ public class DSLVFragmentBGHandle extends DSLVFragment {
 
     @Override
     public DragSortController buildController(DragSortListView dslv) {
-        MyDSController c = new MyDSController(dslv);
-        return c;
+        return new MyDSController(dslv);
     }
 
 

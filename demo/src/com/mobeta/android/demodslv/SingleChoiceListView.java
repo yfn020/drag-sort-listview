@@ -11,7 +11,6 @@ import com.mobeta.android.dslv.DragSortListView;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
 public class SingleChoiceListView extends ListActivity {
     private ArrayAdapter<String> adapter;
 

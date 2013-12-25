@@ -21,7 +21,6 @@ public class WarpDSLV extends ListActivity {
                 @Override
                 public void drop(int from, int to) {
                     String item = adapter.getItem(from);
-
                     adapter.notifyDataSetChanged();
                     adapter.remove(item);
                     adapter.insert(item, to);

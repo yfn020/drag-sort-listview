@@ -10,7 +10,6 @@ import com.mobeta.android.dslv.DragSortListView.RemoveListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
 public class MultipleChoiceListView extends ListActivity {
     private ArrayAdapter<String> adapter;
 
@@ -48,7 +47,6 @@ public class MultipleChoiceListView extends ListActivity {
         ArrayList<String> arrayList = new ArrayList<String>(Arrays.asList(array));
 
         adapter = new ArrayAdapter<String>(this, R.layout.list_item_checkable, R.id.text, arrayList);
-
         setListAdapter(adapter);
 
         DragSortListView list = getListView();
