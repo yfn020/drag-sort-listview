@@ -1,6 +1,7 @@
 package com.mobeta.android.dslv;
 
 import android.graphics.Point;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
@@ -229,6 +230,7 @@ public class DragSortController extends SimpleFloatViewManager implements View.O
         }
 
         mDragging = mDslv.startDrag(position - mDslv.getHeaderViewsCount(), dragFlags, deltaX, deltaY);
+
         return mDragging;
     }
 
@@ -405,7 +407,7 @@ public class DragSortController extends SimpleFloatViewManager implements View.O
 
     @Override
     public void onLongPress(MotionEvent e) {
-        // Log.d("mobeta", "lift listener long pressed");
+        Log.d("mobeta", "lift listener long pressed,position:" + mHitPos);
         if (mHitPos != MISS && mDragInitMode == ON_LONG_PRESS) {
             mDslv.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
             startDrag(mHitPos, mCurrX - mItemX, mCurrY - mItemY);
