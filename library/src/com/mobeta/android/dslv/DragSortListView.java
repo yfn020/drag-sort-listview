@@ -666,6 +666,21 @@ public class DragSortListView extends ListView {
             return mAdapter.isEmpty();
         }
 
+        public void setBackgroundColor(View view, int position, int color1, int color2) {
+            if (position % 2 == 0) {
+                view.setBackgroundColor(color1);
+            } else {
+                view.setBackgroundColor(color2);
+            }
+        }
+
+        public void setBackgroundResource(View view, int position, int resid1, int resid2) {
+            if (position % 2 == 0) {
+                view.setBackgroundResource(resid1);
+            } else {
+                view.setBackgroundResource(resid2);
+            }
+        }
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
@@ -679,6 +694,7 @@ public class DragSortListView extends ListView {
                 View oldChild = v.getChildAt(0);
 
                 child = mAdapter.getView(position, oldChild, DragSortListView.this);
+                setBackgroundColor(child, position, Color.RED, Color.BLUE);
                 if (child != oldChild) {
                     // shouldn't get here if user is reusing convertViews
                     // properly
@@ -689,6 +705,7 @@ public class DragSortListView extends ListView {
                 }
             } else {
                 child = mAdapter.getView(position, null, DragSortListView.this);
+                setBackgroundColor(child, position, Color.RED, Color.BLUE);
                 if (child instanceof Checkable) {
                     v = new DragSortItemViewCheckable(getContext());
                 } else {
@@ -715,8 +732,7 @@ public class DragSortListView extends ListView {
         // Log.d("mobeta", "div="+divider+" divH="+dividerHeight);
 
         if (divider != null && dividerHeight != 0) {
-            final ViewGroup expItem = (ViewGroup) getChildAt(expPosition
-                    - getFirstVisiblePosition());
+            final ViewGroup expItem = (ViewGroup) getChildAt(expPosition - getFirstVisiblePosition());
             if (expItem != null) {
                 final int l = getPaddingLeft();
                 final int r = getWidth() - getPaddingRight();
@@ -766,8 +782,9 @@ public class DragSortListView extends ListView {
             int x = mFloatLoc.x;
 
             int width = getWidth();
-            if (x < 0)
+            if (x < 0) {
                 x = -x;
+            }
             float alphaMod;
             if (x < width) {
                 alphaMod = ((float) (width - x)) / ((float) width);
@@ -1041,7 +1058,6 @@ public class DragSortListView extends ListView {
                 mSlideFrac = 0.5f * (1.0f + ((float) (edgeBottom - mFloatViewMid)) / slideRgnHeightF);
 //                Log.d("mobeta", "firstExp=" + mFirstExpPos + " secExp=" + mSecondExpPos + " slideFrac=" + mSlideFrac);
             }
-
         } else {
             mFirstExpPos = itemPos;
             mSecondExpPos = itemPos;
@@ -1141,7 +1157,6 @@ public class DragSortListView extends ListView {
             }
 
             float fraction = ((float) (SystemClock.uptimeMillis() - mStartTime)) / mDurationF;
-
             if (fraction >= 1f) {
                 onUpdate(1f, 1f);
                 onStop();
@@ -1353,7 +1368,6 @@ public class DragSortListView extends ListView {
     }
 
     public void removeItem(int which) {
-
         mUseRemoveVelocity = false;
         removeItem(which, 0);
     }
@@ -1367,7 +1381,6 @@ public class DragSortListView extends ListView {
      */
     public void removeItem(int which, float velocityX) {
         if (mDragState == IDLE || mDragState == DRAGGING) {
-
             if (mDragState == IDLE) {
                 // called from outside drag-sort
                 mSrcPos = getHeaderViewsCount() + which;
@@ -1819,7 +1832,6 @@ public class DragSortListView extends ListView {
 
     private void adjustItem(int position) {
         View v = getChildAt(position - getFirstVisiblePosition());
-
         if (v != null) {
             adjustItem(position, v, false);
         }
@@ -1830,7 +1842,6 @@ public class DragSortListView extends ListView {
      * wrapped item.
      */
     private void adjustItem(int position, View v, boolean invalidChildHeight) {
-
         // Adjust item height
         ViewGroup.LayoutParams lp = v.getLayoutParams();
         int height;
@@ -1874,7 +1885,6 @@ public class DragSortListView extends ListView {
         }
 
         View v = getChildAt(position - getFirstVisiblePosition());
-
         if (v != null) {
             // item is onscreen, therefore child height is valid,
             // hence the "true"
@@ -2383,14 +2393,13 @@ public class DragSortListView extends ListView {
          * of the float View can be altered by setting
          * <code>location.x</code> and <code>location.y</code>.
          *
-         * @param floatView     The floating View.
-         * @param location      The location (top-left; relative to DSLV
-         *                      top-left) at which the float
-         *                      View would like to appear, given the current touch location
-         *                      and the offset provided in {@link DragSortListView#startDrag}.
-         * @param touch         The current touch location (relative to DSLV
-         *                      top-left).
-         * @param pendingScroll
+         * @param floatView The floating View.
+         * @param location  The location (top-left; relative to DSLV
+         *                  top-left) at which the float
+         *                  View would like to appear, given the current touch location
+         *                  and the offset provided in {@link DragSortListView#startDrag}.
+         * @param touch     The current touch location (relative to DSLV
+         *                  top-left).
          */
         public void onDragFloatView(View floatView, Point location, Point touch);
 
