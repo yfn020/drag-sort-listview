@@ -11,7 +11,6 @@ import android.view.MenuItem;
 import com.mobeta.android.dslv.DragSortController;
 import com.mobeta.android.dslv.DragSortListView;
 
-
 public class TestBedDSLV extends FragmentActivity implements
         RemoveModeDialog.RemoveOkListener,
         DragInitModeDialog.DragOkListener,
