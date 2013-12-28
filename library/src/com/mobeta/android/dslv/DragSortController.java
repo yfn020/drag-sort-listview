@@ -244,8 +244,7 @@ public class DragSortController extends SimpleFloatViewManager implements View.O
             mFlingRemoveDetector.onTouchEvent(ev);
         }
 
-        int action = ev.getAction() & MotionEvent.ACTION_MASK;
-        switch (action) {
+        switch (ev.getAction() & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_DOWN:
                 mCurrX = (int) ev.getX();
                 mCurrY = (int) ev.getY();

@@ -114,7 +114,6 @@ public class DSLVFragment extends ListFragment {
         return controller;
     }
 
-
     /**
      * Called when the activity is first created.
      */

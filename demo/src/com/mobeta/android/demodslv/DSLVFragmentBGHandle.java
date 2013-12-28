@@ -34,16 +34,16 @@ public class DSLVFragmentBGHandle extends DSLVFragment {
 
 
     private class MyAdapter extends ArrayAdapter<String> {
-      
-      public MyAdapter(List<String> artists) {
-        super(getActivity(), getItemLayout(), R.id.text, artists);
-      }
 
-      public View getView(int position, View convertView, ViewGroup parent) {
-        View v = super.getView(position, convertView, parent);
-        v.getBackground().setLevel(3000);
-        return v;
-      }
+        public MyAdapter(List<String> artists) {
+            super(getActivity(), getItemLayout(), R.id.text, artists);
+        }
+
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View v = super.getView(position, convertView, parent);
+            v.getBackground().setLevel(3000);
+            return v;
+        }
     }
 
     private class MyDSController extends DragSortController {
@@ -53,6 +53,11 @@ public class DSLVFragmentBGHandle extends DSLVFragment {
         public MyDSController(DragSortListView dslv) {
             super(dslv);
             setDragHandleId(R.id.text);
+            setClickRemoveId(R.id.click_remove);
+            setRemoveEnabled(true);
+            setSortEnabled(sortEnabled);
+            setDragInitMode(ON_LONG_PRESS);
+            setRemoveMode(removeMode);
             mDslv = dslv;
         }
 
@@ -80,7 +85,6 @@ public class DSLVFragmentBGHandle extends DSLVFragment {
             }
         }
     }
-
 
 
 }
